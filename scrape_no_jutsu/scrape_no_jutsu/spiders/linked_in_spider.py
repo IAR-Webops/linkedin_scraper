@@ -43,17 +43,36 @@ class LinkedInSpider(CrawlSpider):
 
         item = LinkedInItem()
 
+        # Name of the candidate
         item['name'] = response.xpath('//span[@class="full-name"]/text()').extract()[0]
+
+        # Storing the experiences array
         exp = response.xpath('//a[@title="Learn more about this title"]/text()').extract()
 
-        locations = response.xpath('//a[@dir="auto"]/text()').extract()
+        # Organizations where the member has worked for experiences (use only first len(exp) for the results)
+        org = response.xpath('//a[@dir="auto"]/text()').extract()
+
+        # The timeline array pertaining to all experiences
+        exp_times = response.xpath('//span[@class="experience-date-locale"]/time/text()').extract()
 
         int i = 0
 
         for x in exp:
-            item['experiences'][i] = x
+            item['experiences'][i][0] = x
+            item['experiences'][i][1] = org[i]
+            if len(exp_times)%2 == 0:
+                item['experiences'][i][2] = exp_times[i*2]
+                item['experiences'][i][3] = exp_times[i*2+1]
+            else:
+                if i == 0:
+                    item['experiences'][i][2] = exp_times[0]
+                    item['experiences'][i][3] = 'present'
+                else:
+                    item['experiences'][i][2] = exp_times[i*2-1]
+                    item['experiences'][i][3] = exp_times[i*2]
             i = i + 1
 
+# Location and description were not possible because the coorelation is not achievable in this model
 
 #        filename = response.url.split("/")[-2]
 #        with open(filename, 'wb') as f:
