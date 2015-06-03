@@ -8,12 +8,9 @@
 import scrapy
 
 
-class DmozItem(scrapy.Item):
+class ScrapeNoJutsuItem(scrapy.Item):
     # define the fields for your item here like:
     # name = scrapy.Field()
-    title = scrapy.Field()
-    link = scrapy.Field()
-    desc = scrapy.Field()
     pass
 
 class LinkedInItem(scrapy.Item):
@@ -46,4 +43,3 @@ class LinkedInItem(scrapy.Item):
     im = scrapy.Field()
 
     pass
-

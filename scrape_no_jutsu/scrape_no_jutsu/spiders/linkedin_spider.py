@@ -8,7 +8,7 @@ from scrapy.spider import BaseSpider
 from scrapy.selector import HtmlXPathSelector
 
 
-class LinkedInSpider(CrawlSpider):
+class LinkedinSpider(CrawlSpider):
     name = 'linkedin'
     allowed_domains = ['linkedin.com']
     login_page = 'https://www.linkedin.com/uas/login'
@@ -41,6 +41,8 @@ class LinkedInSpider(CrawlSpider):
     def parse(self, response):
         self.log("\n\n\n We got data! \n\n\n")
 
+        '''
+
         item = LinkedInItem()
 
         # Name of the candidate
@@ -72,9 +74,13 @@ class LinkedInSpider(CrawlSpider):
                     item['experiences'][i][3] = exp_times[i*2]
             i = i + 1
 
+        '''
+
 # Location and description were not possible because the coorelation is not achievable in this model
 
-#        filename = response.url.split("/")[-2]
-#        with open(filename, 'wb') as f:
-#            f.write(response.body)
+        filename = response.url.split("/")[-2]
+        with open(filename, 'wb') as f:
+            f.write(response.body)
+
+
 
