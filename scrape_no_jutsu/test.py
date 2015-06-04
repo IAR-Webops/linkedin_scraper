@@ -19,9 +19,16 @@ exp_back = Selector(text=response.xpath('//div[contains(@class,"background-exper
 # Retrieving the list of divs which host individual experiences
 exp_divs = exp_back.xpath('//div[contains(@class,"section-item")]').extract()
 
+print '-----------------------------------------------------------------------------------------'
+print ''
+print 'Experiences information:'
+print ''
+print '--------------------------------------------------------------------------------------------------'
 
 #Looping over each experience div to get the required data
 for exp_div in exp_divs:
+
+    print ''
 
     # Generating a selector for each experience div
     exp_sel = Selector(text=exp_div)
@@ -65,6 +72,7 @@ for exp_div in exp_divs:
     else:
         print description[0]
 
+    print ''
 
 ################################# Experiences Code Ends ########################################
 ################################################################################################
@@ -81,8 +89,16 @@ edu_back = Selector(text=response.xpath('//div[contains(@class,"background-educa
 # Retrieving the list of divs which host individual experiences
 edu_divs = edu_back.xpath('//div[contains(@class,"section-item")]').extract()
 
+print '--------------------------------------------------------------------------------------------------'
+print ''
+print 'Education information:'
+print ''
+print '--------------------------------------------------------------------------------------------------'
+
 #Looping over each education div to get the required data
 for edu_div in edu_divs:
+
+    print ''
 
     # Generating a selector for each education div
     edu_sel = Selector(text=edu_div)
@@ -131,9 +147,8 @@ for edu_div in edu_divs:
     for course in courses:
         print "This course has been taken during his education here: " + course
 
+    print ''
+print '--------------------------------------------------------------------------------------------------'
 
-
-
-
-
-
+################################### Education Code Ends ########################################
+################################################################################################
