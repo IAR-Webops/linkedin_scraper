@@ -31,6 +31,7 @@ class LinkedinSpider(CrawlSpider):
         f = open(pwd+'creds', 'r')
         username = f.readline()
         password = f.readline()
+        f.close()
         #log.msg("The username is:" + username)
         #log.msg("The password is:" + password)
         return FormRequest.from_response(response,
