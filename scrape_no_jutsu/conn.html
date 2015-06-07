@@ -16,7 +16,7 @@
 <script>
 var app = angular.module('myApp', []);
 app.controller('customersCtrl', function($scope, $http) {
-        $http.get("more.json")
+        $http.get("more")
         .success(function (response) {$scope.names = response.contacts;});
         });
 </script>

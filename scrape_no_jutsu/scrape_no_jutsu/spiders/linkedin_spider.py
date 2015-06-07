@@ -7,15 +7,14 @@ from scrapy.contrib.spiders import CrawlSpider, Rule
 from scrapy.spider import BaseSpider
 from scrapy.selector import HtmlXPathSelector
 from scrapy.selector import Selector
+from scrapy import log
 
 
 class LinkedinSpider(CrawlSpider):
     name = 'linkedin'
     allowed_domains = ['linkedin.com']
     login_page = 'https://www.linkedin.com/uas/login'
-
     start_urls = ["https://www.linkedin.com/edu/alumni?id=9798246"]
-
 
     def start_requests(self):
         yield Request(
@@ -25,8 +24,13 @@ class LinkedinSpider(CrawlSpider):
                 )
 
     def login(self, response):
+        f = open('/home/manne/webops/iar/linkedin_scraper/scrape_no_jutsu/creds', 'r')
+        username = f.readline()
+        password = f.readline()
+        log.msg("The username is:" + username)
+        log.msg("The password is:" + password)
         return FormRequest.from_response(response,
-                formdata={'session_key': 'dharani.manne@gmail.com', 'session_password': 'amulyaabhi'},
+                formdata={'session_key': username, 'session_password': password},
                 callback=self.check_login_response)
 
     def check_login_response(self, response):
