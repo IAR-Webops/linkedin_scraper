@@ -8,6 +8,7 @@ from scrapy.spider import BaseSpider
 from scrapy.selector import HtmlXPathSelector
 from scrapy.selector import Selector
 from scrapy import log
+import os
 
 
 class LinkedinSpider(CrawlSpider):
@@ -24,11 +25,14 @@ class LinkedinSpider(CrawlSpider):
                 )
 
     def login(self, response):
-        f = open('/home/manne/webops/iar/linkedin_scraper/scrape_no_jutsu/creds', 'r')
+        pwd = os.path.dirname(os.path.abspath(__file__))
+        pwd = pwd[0:-23]
+        log.msg("The pwd variable has the path: " + pwd)
+        f = open(pwd+'creds', 'r')
         username = f.readline()
         password = f.readline()
-        log.msg("The username is:" + username)
-        log.msg("The password is:" + password)
+        #log.msg("The username is:" + username)
+        #log.msg("The password is:" + password)
         return FormRequest.from_response(response,
                 formdata={'session_key': username, 'session_password': password},
                 callback=self.check_login_response)
