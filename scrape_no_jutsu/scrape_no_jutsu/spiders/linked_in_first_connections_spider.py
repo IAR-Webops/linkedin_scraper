@@ -30,7 +30,7 @@ class LinkedPySpider(InitSpider):
             self.log("\n\n\nSuccessfully logged in. Let's start crawling!\n\n\n")
             # Now the crawling can begin..
 
-            return self.initialized() # ****THIS LINE FIXED THE LAST PROBLEM*****
+            return self.initialized()
 
         else:
             self.log("\n\n\nFailed, Bad times :(\n\n\n")
