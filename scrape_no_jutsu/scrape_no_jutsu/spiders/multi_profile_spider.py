@@ -23,7 +23,7 @@ class LinkedinSpider(InitSpider):
     def login(self, response):
         pwd = os.path.dirname(os.path.abspath(__file__))
         pwd = pwd[0:-23]
-        log.msg("The pwd variable has the path: " + pwd)
+        #log.msg("The pwd variable has the path: " + pwd)
         f = open(pwd+'creds', 'r')
         username = f.readline()
         password = f.readline()

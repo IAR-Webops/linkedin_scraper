@@ -11,10 +11,10 @@ import json
 
 
 class LinkedPySpider(InitSpider):
-    name = 'l1con'
+    name = 'contacts'
     allowed_domains = ['linkedin.com']
     login_page = 'https://www.linkedin.com/uas/login'
-    start_urls = ["https://www.linkedin.com/contacts/api/contacts/more/?start=0&count=60&fields=id"]
+    start_urls = []
 
     def init_request(self):
         #"""This function is called before crawling starts."""
@@ -27,6 +27,21 @@ class LinkedPySpider(InitSpider):
         f = open(pwd+'creds', 'r')
         username = f.readline()
         password = f.readline()
+        g = open(pwd+'multi_contacts','r')
+        r = g.readlines()
+        g.close()
+        g = open(pwd+'multi_contacts','r')
+        num_of_lines = len(r)
+        for x in range(0,num_of_lines):
+            x = g.readline()
+            if x[-1]=='\n':
+
+                self.start_urls.append("https://www.linkedin.com/contacts/api/contacts/"+x[0:-1]+"/?fields=name,emails_extended,phone_numbers,company,title")
+            else:
+                self.start_urls.append("https://www.linkedin.com/contacts/api/contacts/"+x+"/?fields=name,emails_extended,phone_numbers,company,title")
+        g.close()
+        for x in self.start_urls:
+            print x
         return FormRequest.from_response(response,
                     formdata={'session_key': username, 'session_password': password},
                     callback=self.check_login_response)
@@ -59,17 +74,22 @@ class LinkedPySpider(InitSpider):
         # Generating a selector for the container to look into what is present in it
         #cont_sel = Selector(text=cont_back)
 
-        filename = response.url.split("/")[-2]
+        filename = 'response.json'
         with open(filename, 'wb') as f:
             f.write(response.body)
+            f.write('\n')
 
         file_name = open(filename)
         json_file = json.load(file_name)
 
-        f_name = "multi_contacts"
-        with open(f_name, 'wb') as f:
-            for x in json_file['contacts']:
-                f.write(x['id'])
-                f.write('\n')
+        f_name = "response.csv"
+        with open(f_name, 'a') as f:
+            f.write(json_file['contact_data']['name']+","+json_file['contact_data']['emails_extended'][0]['email'])
+            #f.write(x['name'])
+            f.write('\n')
 
-        #os.remove(filename)
+        os.remove(filename)
+
+
+
+
