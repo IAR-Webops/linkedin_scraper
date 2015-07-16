@@ -30,7 +30,7 @@ class LinkedInItem(scrapy.Item):
     previous = scrapy.Field()
 
     # All the educational information pertaining to the candidate, in the following format:
-    # 0-university, 1-degrees, 2-department, 3-from_date, 4-to_date, 5-activities_societies, 6-courses
+    # 0-university, 1-degrees, 2-major, 3-from_date, 4-to_date, 5-activities_societies, 6-courses
     # educations[x][y][z] : x will be the iterator for various educational qualifications
     # educations[x][y][z] : y will be the iterator for all the information related to each education
     # educations[x][y][z] : z will be the optional iterator, incase any field has multiple entries

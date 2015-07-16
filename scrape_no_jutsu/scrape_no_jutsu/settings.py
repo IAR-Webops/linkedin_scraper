@@ -12,6 +12,9 @@ BOT_NAME = 'scrape_no_jutsu'
 
 SPIDER_MODULES = ['scrape_no_jutsu.spiders']
 NEWSPIDER_MODULE = 'scrape_no_jutsu.spiders'
+ITEM_PIPELINES = {
+            'scrape_no_jutsu.pipelines.ScrapeNoJutsuPipeline': 300,
+        }
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 #USER_AGENT = 'scrape_no_jutsu (+http://www.yourdomain.com)'
