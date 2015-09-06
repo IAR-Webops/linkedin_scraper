@@ -31,7 +31,7 @@ html, body{
 }
 
 form {
-    width: 25%;
+    width: 80%;
     margin: auto;
 }
 
@@ -45,15 +45,12 @@ form {
     border-right: 1px solid grey;
 }
 
-.multiple_profile {
-    border-right: 1px solid grey;
-}
-
 .modal-body{
     width: inherit;
 }
 
-.creds_form{
-    width: 80%;
+.tool_heading{
+    text-align: center;
+    margin-top : 5%;
+    margin-bottom: 5%;
 }
-

@@ -41,8 +41,8 @@
             </div>
             <div class="modal-body container">
                 <div class="row common_container">
-                    <form class="creds_form" action="creds.php" method="POST">
-                        <h5>Please save your username and password details for authentication.</h5>
+                    <form action="creds.php" method="POST">
+                        <h4>Please save your username and password details for authentication.</h4>
                         <div class="form-group">
                             <input type="text" class="form-control" placeholder="Linked In Username" name="username"></input>
                         </div>
@@ -64,14 +64,18 @@
 <div class="main container-fluid" ng-app="myApp"> 
 
     <div class="row tools_container">
-        <div class="single_profile col-xs-4 tool_common">
-            <div class="tool_heading">This is the div for single profile scraping</div>
+        <div class="single_profile col-xs-6 tool_common">
+            <div class="tool_heading"><h4><u>Single Profile Scraping</u></h4></div>
+            <form action="single_profile.php" class="single_profile_form" method="GET">
+                        <h5>Please give profile id of person to scrape.</h5>
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Profile ID" name="pid"></input>
+                        </div>
+                        <button type="submit" class=" save_button btn btn-primary">Save in DB</button>
+            </form>
         </div>
-        <div class="multiple_profile col-xs-4 tool_common">
-            <div class="tool_heading">This is the div for multiple profile scraping</div>
-        </div>
-        <div class="first_conn col-xs-4 tool_common">
-            <div class="tool_heading">This is the div for first connection scraping</div>
+        <div class="multiple_profile col-xs-6 tool_common">
+            <div class="tool_heading"><h4><u>Multiple Profile Scraping</u></h4></div>
         </div>
     </div>
 
