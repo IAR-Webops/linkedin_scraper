@@ -48,3 +48,12 @@ form {
 .multiple_profile {
     border-right: 1px solid grey;
 }
+
+.modal-body{
+    width: inherit;
+}
+
+.creds_form{
+    width: 80%;
+}
+

@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html>
-<link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
-<script src= "http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+<script src= "http://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
+<script src= "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 <link href= "style.css" rel="stylesheet">
 <head>
 <title>LinkedIn Scraper Tool</title>
@@ -39,13 +41,13 @@
             </div>
             <div class="modal-body container">
                 <div class="row common_container">
-                    <form>
+                    <form class="creds_form" action="creds.php" method="POST">
                         <h5>Please save your username and password details for authentication.</h5>
                         <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Linked In Username"></input>
+                            <input type="text" class="form-control" placeholder="Linked In Username" name="username"></input>
                         </div>
                         <div class="form-group">
-                            <input type="password" class="form-control" placeholder="Linked In Password"></input>
+                            <input type="password" class="form-control" placeholder="Linked In Password" name="password"></input>
                         </div>
                         <button type="submit" class=" save_button btn btn-primary">Save</button>
                     </form>
