@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html>
-<link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
-<script src= "http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+<script src= "http://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
+<script src= "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 <link href= "style.css" rel="stylesheet">
 <head>
 <title>LinkedIn Scraper Tool</title>
@@ -39,13 +41,13 @@
             </div>
             <div class="modal-body container">
                 <div class="row common_container">
-                    <form>
-                        <h5>Please save your username and password details for authentication.</h5>
+                    <form action="creds.php" method="POST">
+                        <h4>Please save your username and password details for authentication.</h4>
                         <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Linked In Username"></input>
+                            <input type="text" class="form-control" placeholder="Linked In Username" name="username"></input>
                         </div>
                         <div class="form-group">
-                            <input type="password" class="form-control" placeholder="Linked In Password"></input>
+                            <input type="password" class="form-control" placeholder="Linked In Password" name="password"></input>
                         </div>
                         <button type="submit" class=" save_button btn btn-primary">Save</button>
                     </form>
@@ -62,14 +64,18 @@
 <div class="main container-fluid" ng-app="myApp"> 
 
     <div class="row tools_container">
-        <div class="single_profile col-xs-4 tool_common">
-            <div class="tool_heading">This is the div for single profile scraping</div>
+        <div class="single_profile col-xs-6 tool_common">
+            <div class="tool_heading"><h4><u>Single Profile Scraping</u></h4></div>
+            <form action="single_profile.php" class="single_profile_form" method="GET">
+                        <h5>Please give profile id of person to scrape.</h5>
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Profile ID" name="pid"></input>
+                        </div>
+                        <button type="submit" class=" save_button btn btn-primary">Save in DB</button>
+            </form>
         </div>
-        <div class="multiple_profile col-xs-4 tool_common">
-            <div class="tool_heading">This is the div for multiple profile scraping</div>
-        </div>
-        <div class="first_conn col-xs-4 tool_common">
-            <div class="tool_heading">This is the div for first connection scraping</div>
+        <div class="multiple_profile col-xs-6 tool_common">
+            <div class="tool_heading"><h4><u>Multiple Profile Scraping</u></h4></div>
         </div>
     </div>
 
