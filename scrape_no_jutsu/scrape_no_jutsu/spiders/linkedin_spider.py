@@ -16,7 +16,7 @@ class LinkedinSpider(CrawlSpider):
     name = 'linkedin'
     allowed_domains = ['linkedin.com']
     login_page = 'https://www.linkedin.com/uas/login'
-    start_urls = ["https://www.linkedin.com/edu/alumni?id=9798246"]
+    start_urls = []
 
     def start_requests(self):
         yield Request(
@@ -33,6 +33,9 @@ class LinkedinSpider(CrawlSpider):
         username = f.readline()
         password = f.readline()
         f.close()
+        g = open(pwd+'profiles', 'r')
+        str = g.readline()
+        self.start_urls.append("https://www.linkedin.com/profile/view?id="+str)
         #log.msg("The username is:" + username)
         #log.msg("The password is:" + password)
         return FormRequest.from_response(response,
