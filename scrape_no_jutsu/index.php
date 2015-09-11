@@ -76,6 +76,13 @@
         </div>
         <div class="multiple_profile col-xs-6 tool_common">
             <div class="tool_heading"><h4><u>Multiple Profile Scraping</u></h4></div>
+            <form action="multi_profile.php" class="multi_profile_form" method="GET">
+                        <h5>Please give different profils IDs with a space between each profile id of persons to scrape.</h5>
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Profile IDs" name="mpid"></input>
+                        </div>
+                        <button type="submit" class=" save_button btn btn-primary">Save in DB</button>
+            </form>
         </div>
     </div>
 
