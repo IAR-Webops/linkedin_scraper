@@ -1,1 +1,1 @@
-echo "a" | sudo -S scrapy crawl multi
+scrapy crawl multi

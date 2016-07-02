@@ -1,1 +1,1 @@
-echo "a" | sudo -S scrapy crawl linkedin
+scrapy crawl linkedin
